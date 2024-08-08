@@ -426,10 +426,10 @@ struct AppListView: View {
         String(format: """
 %@ %@ %@ © 2024
 %@
-""", appNameString, appVersionString, NSLocalizedString("Copyright", comment: ""), NSLocalizedString("Lessica, Lakr233, mlgm and other contributors.", comment: ""))
+""", appNameString, appVersionString, NSLocalizedString("Copyright", comment: ""), NSLocalizedString("Remake by Truong Quoc Toan.", comment: ""))
     }
 
-    let repoURL = URL(string: "https://github.com/Lessica/TrollFools")
+    let repoURL = URL(string: "https://github.com/xztimee/TrollFools")
 
     func filteredAppList(_ apps: [App]) -> some View {
         ForEach(apps, id: \.id) { app in
@@ -478,7 +478,7 @@ struct AppListView: View {
                                     .font(.headline)
                                     .foregroundColor(.primary)
 
-                                Text(NSLocalizedString("You need to rebuild the icon cache in TrollStore to apply changes.", comment: ""))
+                                Text(NSLocalizedString("Bạn cần xây dựng lại bộ nhớ đệm biểu tượng trong TrollStore để áp dụng các thay đổi.", comment: ""))
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                             }
@@ -511,11 +511,11 @@ struct AppListView: View {
             Section {
                 filteredAppList(vm.userApplications)
             } header: {
-                Text(NSLocalizedString("User Applications", comment: ""))
+                Text(NSLocalizedString("Ứng dụng người dùng", comment: ""))
                     .font(.footnote)
             } footer: {
                 if !vm.filter.isSearching && !vm.filter.showPatchedOnly && vm.unsupportedCount > 0 {
-                    Text(String(format: NSLocalizedString("And %d more unsupported user applications.", comment: ""), vm.unsupportedCount))
+                    Text(String(format: NSLocalizedString("Và %d những ứng dụng ko được hỗ trợ khác.", comment: ""), vm.unsupportedCount))
                         .font(.footnote)
                 }
             }
@@ -523,20 +523,20 @@ struct AppListView: View {
             Section {
                 filteredAppList(vm.trollApplications)
             } header: {
-                Text(NSLocalizedString("TrollStore Applications", comment: ""))
+                Text(NSLocalizedString("Apps TrollStore", comment: ""))
                     .font(.footnote)
             }
 
             Section {
                 filteredAppList(vm.appleApplications)
             } header: {
-                Text(NSLocalizedString("Injectable System Applications", comment: ""))
+                Text(NSLocalizedString("Ứng dụng có thể tiêm", comment: ""))
                     .font(.footnote)
             } footer: {
                 if !vm.filter.isSearching {
                     VStack(alignment: .leading, spacing: 20) {
                         if !vm.filter.showPatchedOnly {
-                            Text(NSLocalizedString("Only removable system applications are eligible and listed.", comment: ""))
+                            Text(NSLocalizedString("Trollfool forked by energyRYDER. /n Build file by xztime", comment: ""))
                                 .font(.footnote)
                         }
 
@@ -555,7 +555,7 @@ struct AppListView: View {
         .navigationTitle(NSLocalizedString("TrollFools", comment: ""))
         .background(Group {
             NavigationLink(isActive: $isErrorOccurred) {
-                FailureView(title: NSLocalizedString("Error", comment: ""),
+                FailureView(title: NSLocalizedString("Lỗi", comment: ""),
                             message: errorMessage)
             } label: { }
         })
@@ -574,7 +574,7 @@ struct AppListView: View {
                               : "eject.circle")
                     }
                 }
-                .accessibilityLabel(NSLocalizedString("Show Patched Only", comment: ""))
+                .accessibilityLabel(NSLocalizedString("Hiện ứng dụng đã tiêm", comment: ""))
             }
         }
     }
